@@ -1,0 +1,26 @@
+{
+  "name": "side-project-notebook",
+  "version": "1.0.0",
+  "description": "side project notebook",
+  "main": "index.js",
+  "dependencies": {
+    "webpack": "^3.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yichinweng/side-project-notebook.git"
+  },
+  "keywords": [
+    "side-project"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yichinweng/side-project-notebook/issues"
+  },
+  "homepage": "https://github.com/yichinweng/side-project-notebook#readme"
+}
