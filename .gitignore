@@ -1,0 +1,5 @@
+# Dependency directory
+node_modules
+
+# The file packed by Webpack
+/public/bundle.js
