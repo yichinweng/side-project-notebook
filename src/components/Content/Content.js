@@ -4,7 +4,7 @@ class Content extends React.Component {
   render() {
     return (
       <p>Note Book Content</p>
-    )
+    );
   }
 }
 
