@@ -4,16 +4,16 @@ class List extends React.Component {
   renderNotebook(key) {
     const note = this.props.notes[key];
     return (
-      <div className="notebook-inside-list" key={key}>
+      <div className="note-list" key={key}>
         <h2>{note.title}</h2>
-        <h2>{note.timestamp}</h2>
+        <span>{note.timestamp}</span>
       </div>
     );
   }
 
   render() {
     return (
-      <div>
+      <div className="note-list-container">
         <h1>筆記本</h1>
         {
           Object

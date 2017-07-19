@@ -1,6 +1,7 @@
 import React from 'react';
 import List from '../List/List';
 import Content from '../Content/Content';
+import { getNowTime } from '../../helper';
 
 class App extends React.Component {
   constructor() {
@@ -11,7 +12,7 @@ class App extends React.Component {
         noteDefault: {
           title: 'Untitled',
           content: '',
-          timestamp: Date.now(),
+          timestamp: getNowTime(),
         },
       },
     };
@@ -23,7 +24,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="note-app">
         <List notes={this.state.notes} />
         <Content notes={this.state.notes} updateNote={this.updateNote} />
       </div>
