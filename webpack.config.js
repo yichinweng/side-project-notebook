@@ -2,6 +2,7 @@ module.exports = {
   entry: `${__dirname}/src/index.js`,
   output: {
     path: `${__dirname}/public`,
+    publicPath: 'http://localhost:3001/',
     filename: 'bundle.js',
   },
   module: {
@@ -18,6 +19,17 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader',
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
       },
     ],
   },
