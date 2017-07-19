@@ -1,6 +1,8 @@
 import React from 'react';
 import { getNowTime } from '../../helper';
 
+import './Content.scss';
+
 class Content extends React.Component {
   constructor() {
     super();

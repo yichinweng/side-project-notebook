@@ -3,6 +3,8 @@ import List from '../List/List';
 import Content from '../Content/Content';
 import { getNowTime } from '../../helper';
 
+import './App.scss';
+
 class App extends React.Component {
   constructor() {
     super();

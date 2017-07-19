@@ -1,0 +1,21 @@
+@import '../../global';
+
+.note-list-container {
+  padding: 0 10px 10px;
+}
+.note-list {
+  cursor: pointer;
+  &:hover {
+    border-bottom: 1px solid $gray;
+  }
+  h2 {
+    color: $black;
+    margin-bottom: 0;
+  }
+  span {
+    font-size: $font-size * .8;
+    color: $light-gray;
+    display: block;
+    margin: 5px;
+  }
+}
