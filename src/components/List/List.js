@@ -5,7 +5,7 @@ class List extends React.Component {
   renderNotebook(key) {
     const note = this.props.notes[key];
     return (
-      <div className="note-list" key={key}>
+      <div className="note-list-item" key={key}>
         <h2>{note.title}</h2>
         <span>{note.timestamp}</span>
       </div>
@@ -14,13 +14,16 @@ class List extends React.Component {
 
   render() {
     return (
-      <div className="note-list-container">
-        <h1>筆記本</h1>
-        {
-          Object
-            .keys(this.props.notes)
-            .map(key => this.renderNotebook(key))
-        }
+      <div>
+        <div className="note-list-container">
+          <h1>筆記本</h1>
+          {
+            Object
+              .keys(this.props.notes)
+              .map(key => this.renderNotebook(key))
+          }
+        </div>
+        <button>＋ Page</button>
       </div>
     );
   }

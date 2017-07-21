@@ -1,7 +1,6 @@
 @import '../../global';
 
 .note-content-container {
-  position: relative;
   padding: 10px;
   &:after {
     position: absolute;
@@ -23,7 +22,6 @@
     color: $gray;
     display: inline-block;
     width: 80%;
-    border: 0;
     border-bottom: 1px solid $light-gray;
     background: transparent;
   }
@@ -39,7 +37,6 @@
     width: 100%;
     height: calc(100vh - 100px);
     resize: none;
-    border: 0;
     background: transparent;
   }
 }

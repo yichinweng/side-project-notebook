@@ -2,18 +2,22 @@
 
 * {
   line-height: $line-height;
+  position: relative;
   box-sizing: border-box;
 }
 html,
 body {
   margin: 0;
 }
-input:focus,
-textarea:focus {
-  outline: 0;
+input,
+textarea,
+button {
+  border: 0;
+  &:focus {
+    outline: 0;
+  }
 }
 .note-app {
-  position: relative;
   display: flex;
 }
 .note-list-container {
