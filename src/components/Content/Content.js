@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getNowTime } from '../../helper';
 
 import './Content.scss';
@@ -47,5 +48,17 @@ class Content extends React.Component {
     );
   }
 }
+Content.propTypes = {
+  notes: PropTypes.shape({
+    noteDefault: PropTypes.shape({
+      // these attribute should add `isRequired`, but it will be error.
+      title: PropTypes.string,
+      content: PropTypes.string,
+      timestamp: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  updateNote: PropTypes.func.isRequired,
+};
 
 export default Content;
+
