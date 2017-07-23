@@ -11,3 +11,13 @@ export function getNowTime() {
   };
   return d.toLocaleDateString('en-us', options);
 }
+
+export function getDefaultNote() {
+  const note = {
+    title: 'Untitled',
+    content: '',
+    timestamp: getNowTime(),
+  };
+
+  return note;
+}

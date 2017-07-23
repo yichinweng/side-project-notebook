@@ -1,17 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getNowTime } from '../../helper';
+import { getDefaultNote } from '../../helper';
 import './List.scss';
 
 class List extends React.Component {
-  createNote() {
-    const note = {
-      title: 'Untitled',
-      content: '',
-      timestamp: getNowTime(),
-    };
-    this.props.addNote(note);
-  }
   renderNotebook(key) {
     const note = this.props.notes[key];
     return (
@@ -33,7 +25,7 @@ class List extends React.Component {
               .map(key => this.renderNotebook(key))
           }
         </div>
-        <button onClick={e => this.createNote(e)}>＋ Page</button>
+        <button onClick={() => this.props.addNote(getDefaultNote())}>＋ Page</button>
       </div>
     );
   }

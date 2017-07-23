@@ -1,7 +1,7 @@
 import React from 'react';
 import List from '../List/List';
 import Content from '../Content/Content';
-import { getNowTime } from '../../helper';
+import { getDefaultNote } from '../../helper';
 import base from '../../base';
 
 import './App.scss';
@@ -14,11 +14,7 @@ class App extends React.Component {
     // state.notes should be empty finally.
     this.state = {
       notes: {
-        noteDefault: {
-          title: 'Untitled',
-          content: '',
-          timestamp: getNowTime(),
-        },
+        noteDefault: getDefaultNote(),
       },
     };
   }
