@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './List.scss';
 
 class List extends React.Component {
@@ -28,5 +29,15 @@ class List extends React.Component {
     );
   }
 }
+
+List.propTypes = {
+  notes: PropTypes.shape({
+    noteDefault: PropTypes.shape({
+      title: PropTypes.string,
+      content: PropTypes.string,
+      timestamp: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default List;
