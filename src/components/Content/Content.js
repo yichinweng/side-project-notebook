@@ -43,20 +43,20 @@ class Content extends React.Component {
   render() {
     return (
       <div className="note-content-container">
-        {this.renderContent('noteDefault')}
+        {this.renderContent(0)}
       </div>
     );
   }
 }
 Content.propTypes = {
-  notes: PropTypes.shape({
-    noteDefault: PropTypes.shape({
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
       // these attribute should add `isRequired`, but it will be error.
       title: PropTypes.string,
       content: PropTypes.string,
       timestamp: PropTypes.string,
     }).isRequired,
-  }).isRequired,
+  ).isRequired,
   updateNote: PropTypes.func.isRequired,
 };
 

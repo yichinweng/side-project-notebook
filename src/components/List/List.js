@@ -32,13 +32,13 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  notes: PropTypes.shape({
-    noteDefault: PropTypes.shape({
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
       title: PropTypes.string,
       content: PropTypes.string,
       timestamp: PropTypes.string,
     }).isRequired,
-  }).isRequired,
+  ).isRequired,
   addNote: PropTypes.func.isRequired,
 };
 

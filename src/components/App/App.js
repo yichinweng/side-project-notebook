@@ -13,9 +13,9 @@ class App extends React.Component {
     this.addNote = this.addNote.bind(this);
     // state.notes should be empty finally.
     this.state = {
-      notes: {
-        noteDefault: getDefaultNote(),
-      },
+      notes: [
+        getDefaultNote(),
+      ],
     };
   }
   componentWillMount() {
@@ -29,14 +29,12 @@ class App extends React.Component {
     base.removeBinding(this.ref);
   }
   updateNote(key, updatedNote) {
-    const notes = { ...this.state.notes };
+    const notes = [...this.state.notes];
     notes[key] = updatedNote;
     this.setState({ notes });
   }
   addNote(note) {
-    const notes = { ...this.state.notes };
-    const newNoteIndex = Object.keys(notes).length + 1;
-    notes[`note-${newNoteIndex}`] = note;
+    const notes = [...this.state.notes, note];
     this.setState({ notes });
   }
   render() {
