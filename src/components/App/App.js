@@ -11,11 +11,13 @@ class App extends React.Component {
     super();
     this.updateNote = this.updateNote.bind(this);
     this.addNote = this.addNote.bind(this);
+    this.updateFocus = this.updateFocus.bind(this);
     // state.notes should be empty finally.
     this.state = {
       notes: [
         getDefaultNote(),
       ],
+      focus: 0,
     };
   }
   componentWillMount() {
@@ -37,11 +39,23 @@ class App extends React.Component {
     const notes = [...this.state.notes, note];
     this.setState({ notes });
   }
+  updateFocus(focus) {
+    this.setState({ focus });
+  }
   render() {
     return (
       <div className="note-app">
-        <List notes={this.state.notes} addNote={this.addNote} />
-        <Content notes={this.state.notes} updateNote={this.updateNote} />
+        <List
+          notes={this.state.notes}
+          addNote={this.addNote}
+          focus={this.state.focus}
+          updateFocus={this.updateFocus}
+        />
+        <Content
+          notes={this.state.notes}
+          updateNote={this.updateNote}
+          focus={this.state.focus}
+        />
       </div>
     );
   }

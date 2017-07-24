@@ -7,7 +7,12 @@ class List extends React.Component {
   renderNotebook(key) {
     const note = this.props.notes[key];
     return (
-      <div className="note-list-item" key={key}>
+      <div
+        role="button"
+        className="note-list-item"
+        key={key}
+        onClick={() => this.props.updateFocus(key)}
+      >
         <h2>{note.title}</h2>
         <span>{note.timestamp}</span>
       </div>
@@ -20,9 +25,7 @@ class List extends React.Component {
         <div className="note-list-container">
           <h1>筆記本</h1>
           {
-            Object
-              .keys(this.props.notes)
-              .map(key => this.renderNotebook(key))
+            this.props.notes.map((note, index) => this.renderNotebook(index))
           }
         </div>
         <button onClick={() => this.props.addNote(getDefaultNote())}>＋ Page</button>
@@ -40,6 +43,7 @@ List.propTypes = {
     }).isRequired,
   ).isRequired,
   addNote: PropTypes.func.isRequired,
+  updateFocus: PropTypes.func.isRequired,
 };
 
 export default List;

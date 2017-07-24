@@ -43,7 +43,7 @@ class Content extends React.Component {
   render() {
     return (
       <div className="note-content-container">
-        {this.renderContent(0)}
+        {this.renderContent(this.props.focus)}
       </div>
     );
   }
@@ -58,6 +58,7 @@ Content.propTypes = {
     }).isRequired,
   ).isRequired,
   updateNote: PropTypes.func.isRequired,
+  focus: PropTypes.number.isRequired,
 };
 
 export default Content;
