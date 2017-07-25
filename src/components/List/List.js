@@ -4,12 +4,16 @@ import { getDefaultNote } from '../../helper';
 import './List.scss';
 
 class List extends React.Component {
+  isActive(key) {
+    return `note-list-item ${(key === this.props.focus) ? 'active' : ''}`;
+  }
+
   renderNotebook(key) {
     const note = this.props.notes[key];
     return (
       <div
         role="button"
-        className="note-list-item"
+        className={this.isActive(key)}
         key={key}
         onClick={() => this.props.updateFocus(key)}
       >
@@ -44,6 +48,7 @@ List.propTypes = {
   ).isRequired,
   addNote: PropTypes.func.isRequired,
   updateFocus: PropTypes.func.isRequired,
+  focus: PropTypes.number.isRequired,
 };
 
 export default List;

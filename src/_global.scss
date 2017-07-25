@@ -1,7 +1,16 @@
 $black: #303841;
 $gray: #3a4750;
+$middle-gray: #808080;
 $light-gray: #d3d6db;
 $red: #be3144;
+$pink: #ffe8eb;
 
 $font-size: 16px;
 $line-height: 1.2em;
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
