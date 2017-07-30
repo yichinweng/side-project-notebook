@@ -4,6 +4,9 @@ import { getDefaultNote } from '../../helper';
 import './List.scss';
 
 class List extends React.Component {
+  static getNoteTitle(note) {
+    return note.title.length > 0 ? note.title : getDefaultNote().title;
+  }
   isActive(key) {
     return `note-list-item ${(key === this.props.focus) ? 'active' : ''}`;
   }
@@ -17,7 +20,7 @@ class List extends React.Component {
         key={key}
         onClick={() => this.props.updateFocus(key)}
       >
-        <h2>{note.title}</h2>
+        <h2>{List.getNoteTitle(note)}</h2>
         <span>{note.timestamp}</span>
       </div>
     );
