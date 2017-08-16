@@ -10,7 +10,6 @@ class List extends React.Component {
   isActive(key) {
     return `note-list-item ${(key === this.props.focus) ? 'active' : ''}`;
   }
-
   renderNotebook(key) {
     const note = this.props.notes[key];
     return (
@@ -20,6 +19,11 @@ class List extends React.Component {
         key={key}
         onClick={() => this.props.updateFocus(key)}
       >
+        <span
+          role="button"
+          className="close"
+          onClick={() => this.props.deleteNote(key)}
+        >&times;</span>
         <h2>{List.getNoteTitle(note)}</h2>
         <span>{note.timestamp}</span>
       </div>
@@ -50,6 +54,7 @@ List.propTypes = {
     }).isRequired,
   ).isRequired,
   addNote: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired,
   updateFocus: PropTypes.func.isRequired,
   focus: PropTypes.number.isRequired,
 };

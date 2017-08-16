@@ -29,19 +29,41 @@
   &:hover {
     border-left: 5px solid $red;
   }
+  &:hover .close {
+    display: block;
+  }
   &.active {
     background-color: $pink;
   }
   h2 {
-    @include text-ellipsis;
     color: $black;
     margin: 0;
-  }
-  span {
+
     @include text-ellipsis;
-    font-size: $font-size * .8;
-    color: $middle-gray;
-    display: block;
-    margin: 5px;
+    + span {
+      font-size: $font-size * .8;
+      color: $middle-gray;
+      display: block;
+      margin: 5px;
+
+      @include text-ellipsis;
+    }
+  }
+  .close {
+    font-weight: bold;
+    line-height: 12px;
+    color: $gray;
+    position: absolute;
+    z-index: 1;
+    top: 4px;
+    right: 6px;
+    display: none;
+    width: 14px;
+    height: 15px;
+    text-align: center;
+    &:hover {
+      color: $light-gray;
+      background-color: $black;
+    }
   }
 }

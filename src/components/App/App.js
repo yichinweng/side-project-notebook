@@ -11,6 +11,7 @@ class App extends React.Component {
     super();
     this.updateNote = this.updateNote.bind(this);
     this.addNote = this.addNote.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
     this.updateFocus = this.updateFocus.bind(this);
     // state.notes should be empty finally.
     this.state = {
@@ -39,6 +40,11 @@ class App extends React.Component {
     const notes = [...this.state.notes, note];
     this.setState({ notes });
   }
+  deleteNote(key) {
+    const notes = [...this.state.notes];
+    notes[key] = null;
+    this.setState({ notes });
+  }
   updateFocus(focus) {
     this.setState({ focus });
   }
@@ -48,6 +54,7 @@ class App extends React.Component {
         <List
           notes={this.state.notes}
           addNote={this.addNote}
+          deleteNote={this.deleteNote}
           focus={this.state.focus}
           updateFocus={this.updateFocus}
         />
