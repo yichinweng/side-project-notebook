@@ -20,9 +20,9 @@ class App extends React.Component {
       focus: 0,
     };
   }
-  updateNote(key, updatedNote) {
+  updateNote(updatedNote) {
     const notes = [...this.state.notes];
-    notes[key] = updatedNote;
+    notes[this.state.focus] = updatedNote;
     this.setState({ notes });
   }
   addNote(note) {
@@ -48,9 +48,8 @@ class App extends React.Component {
           updateFocus={this.updateFocus}
         />
         <Content
-          notes={this.state.notes}
+          note={this.state.notes[this.state.focus]}
           updateNote={this.updateNote}
-          focus={this.state.focus}
         />
       </div>
     );

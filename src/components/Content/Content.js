@@ -10,17 +10,16 @@ class Content extends React.Component {
     this.saveNote = this.saveNote.bind(this);
     this.renderContent = this.renderContent.bind(this);
   }
-  saveNote(e, key) {
-    const note = this.props.notes[key];
+
+  saveNote(e, note) {
     const updatedNote = {
       ...note,
       [e.target.name]: e.target.value,
       timestamp: getNowTime(),
     };
-    this.props.updateNote(key, updatedNote);
+    this.props.updateNote(updatedNote);
   }
-  renderContent(key) {
-    const note = this.props.notes[key];
+  renderContent(note) {
     return (
       <div className="note-content">
         <input
@@ -28,14 +27,14 @@ class Content extends React.Component {
           name="title"
           value={note.title}
           placeholder="Title"
-          onChange={e => this.saveNote(e, key)}
+          onChange={e => this.saveNote(e, note)}
         />
         <span>{note.timestamp}</span>
         <textarea
           name="content"
           value={note.content}
           placeholder="Enter your note..."
-          onChange={e => this.saveNote(e, key)}
+          onChange={e => this.saveNote(e, note)}
         />
       </div>
     );
@@ -43,22 +42,19 @@ class Content extends React.Component {
   render() {
     return (
       <div className="note-content-container">
-        {this.renderContent(this.props.focus)}
+        {this.renderContent(this.props.note)}
       </div>
     );
   }
 }
 Content.propTypes = {
-  notes: PropTypes.arrayOf(
-    PropTypes.shape({
-      // these attribute should add `isRequired`, but it will be error.
-      title: PropTypes.string,
-      content: PropTypes.string,
-      timestamp: PropTypes.string,
-    }).isRequired,
-  ).isRequired,
+  note: PropTypes.shape({
+    // these attribute should add `isRequired`, but it will be error.
+    title: PropTypes.string,
+    content: PropTypes.string,
+    timestamp: PropTypes.string,
+  }).isRequired,
   updateNote: PropTypes.func.isRequired,
-  focus: PropTypes.number.isRequired,
 };
 
 export default Content;
