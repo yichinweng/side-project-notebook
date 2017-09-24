@@ -7,8 +7,17 @@ class List extends React.Component {
   static getNoteTitle(note) {
     return note.title.length > 0 ? note.title : getDefaultNote().title;
   }
+  constructor() {
+    super();
+    this.delete = this.delete.bind(this);
+  }
+
   isActive(key) {
     return `note-list-item ${(key === this.props.focus) ? 'active' : ''}`;
+  }
+  delete(e, key) {
+    this.props.onDeleteNote(key);
+    e.stopPropagation();
   }
   renderNotebook(key) {
     const note = this.props.notes[key];
@@ -22,7 +31,7 @@ class List extends React.Component {
         <span
           role="button"
           className="close"
-          onClick={() => this.props.deleteNote(key)}
+          onClick={e => this.delete(e, key)}
         >&times;</span>
         <h2>{List.getNoteTitle(note)}</h2>
         <span>{note.timestamp}</span>
@@ -55,7 +64,7 @@ List.propTypes = {
   ).isRequired,
   focus: PropTypes.number.isRequired,
   onAddNote: PropTypes.func.isRequired,
-  deleteNote: PropTypes.func.isRequired,
+  onDeleteNote: PropTypes.func.isRequired,
   onUpdateFocus: PropTypes.func.isRequired,
 };
 

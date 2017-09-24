@@ -10,7 +10,7 @@ class App extends React.Component {
     super();
     this.handleContentUpdate = this.handleContentUpdate.bind(this);
     this.handleListAddNote = this.handleListAddNote.bind(this);
-    this.deleteNote = this.deleteNote.bind(this);
+    this.handleListDeleteNote = this.handleListDeleteNote.bind(this);
     this.handleUpdateFocus = this.handleUpdateFocus.bind(this);
     // state.notes should be empty finally.
     this.state = {
@@ -29,10 +29,21 @@ class App extends React.Component {
     const notes = [...this.state.notes, note];
     this.setState({ notes });
   }
-  deleteNote(key) {
-    const notes = [...this.state.notes];
-    notes[key] = null;
+  handleListDeleteNote(key) {
+    let notes = [...this.state.notes];
+    notes.splice(key, 1);
+    if (notes.length === 0) {
+      notes = [getDefaultNote()];
+    }
     this.setState({ notes });
+    this.refreshFocus(key);
+  }
+  refreshFocus(key) {
+    if (this.state.focus > key) {
+      this.handleUpdateFocus(this.state.focus - 1);
+    } else if (this.state.focus === key) {
+      this.handleUpdateFocus(0);
+    }
   }
   handleUpdateFocus(focus) {
     this.setState({ focus });
@@ -44,7 +55,7 @@ class App extends React.Component {
           notes={this.state.notes}
           focus={this.state.focus}
           onAddNote={this.handleListAddNote}
-          deleteNote={this.deleteNote}
+          onDeleteNote={this.handleListDeleteNote}
           onUpdateFocus={this.handleUpdateFocus}
         />
         <Content
