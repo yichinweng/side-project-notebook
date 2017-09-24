@@ -7,19 +7,20 @@ import './Content.scss';
 class Content extends React.Component {
   constructor() {
     super();
-    this.saveNote = this.saveNote.bind(this);
+    this.save = this.save.bind(this);
     this.renderContent = this.renderContent.bind(this);
   }
 
-  saveNote(e, note) {
+  save(e) {
     const updatedNote = {
-      ...note,
+      ...this.props.note,
       [e.target.name]: e.target.value,
       timestamp: getNowTime(),
     };
-    this.props.updateNote(updatedNote);
+    this.props.update(updatedNote);
   }
-  renderContent(note) {
+  renderContent() {
+    const note = this.props.note;
     return (
       <div className="note-content">
         <input
@@ -27,14 +28,14 @@ class Content extends React.Component {
           name="title"
           value={note.title}
           placeholder="Title"
-          onChange={e => this.saveNote(e, note)}
+          onChange={e => this.save(e)}
         />
         <span>{note.timestamp}</span>
         <textarea
           name="content"
           value={note.content}
           placeholder="Enter your note..."
-          onChange={e => this.saveNote(e, note)}
+          onChange={e => this.save(e)}
         />
       </div>
     );
@@ -42,7 +43,7 @@ class Content extends React.Component {
   render() {
     return (
       <div className="note-content-container">
-        {this.renderContent(this.props.note)}
+        {this.renderContent()}
       </div>
     );
   }
@@ -54,7 +55,7 @@ Content.propTypes = {
     content: PropTypes.string,
     timestamp: PropTypes.string,
   }).isRequired,
-  updateNote: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired,
 };
 
 export default Content;

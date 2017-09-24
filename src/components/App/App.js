@@ -8,7 +8,7 @@ import './App.scss';
 class App extends React.Component {
   constructor() {
     super();
-    this.updateNote = this.updateNote.bind(this);
+    this.update = this.update.bind(this);
     this.addNote = this.addNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
     this.updateFocus = this.updateFocus.bind(this);
@@ -20,7 +20,7 @@ class App extends React.Component {
       focus: 0,
     };
   }
-  updateNote(updatedNote) {
+  update(updatedNote) {
     const notes = [...this.state.notes];
     notes[this.state.focus] = updatedNote;
     this.setState({ notes });
@@ -49,7 +49,7 @@ class App extends React.Component {
         />
         <Content
           note={this.state.notes[this.state.focus]}
-          updateNote={this.updateNote}
+          update={this.update}
         />
       </div>
     );
