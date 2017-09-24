@@ -17,7 +17,7 @@ class Content extends React.Component {
       [e.target.name]: e.target.value,
       timestamp: getNowTime(),
     };
-    this.props.update(updatedNote);
+    this.props.onUpdate(updatedNote);
   }
   renderContent() {
     const note = this.props.note;
@@ -55,7 +55,7 @@ Content.propTypes = {
     content: PropTypes.string,
     timestamp: PropTypes.string,
   }).isRequired,
-  update: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default Content;

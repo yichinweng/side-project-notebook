@@ -17,7 +17,7 @@ class List extends React.Component {
         role="button"
         className={this.isActive(key)}
         key={key}
-        onClick={() => this.props.updateFocus(key)}
+        onClick={() => this.props.onUpdateFocus(key)}
       >
         <span
           role="button"
@@ -39,7 +39,7 @@ class List extends React.Component {
             this.props.notes.map((note, index) => this.renderNotebook(index))
           }
         </div>
-        <button onClick={() => this.props.addNote(getDefaultNote())}>＋ Page</button>
+        <button onClick={() => this.props.onAddNote(getDefaultNote())}>＋ Page</button>
       </div>
     );
   }
@@ -53,10 +53,10 @@ List.propTypes = {
       timestamp: PropTypes.string,
     }).isRequired,
   ).isRequired,
-  addNote: PropTypes.func.isRequired,
-  deleteNote: PropTypes.func.isRequired,
-  updateFocus: PropTypes.func.isRequired,
   focus: PropTypes.number.isRequired,
+  onAddNote: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired,
+  onUpdateFocus: PropTypes.func.isRequired,
 };
 
 export default List;

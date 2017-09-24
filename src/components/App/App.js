@@ -8,10 +8,10 @@ import './App.scss';
 class App extends React.Component {
   constructor() {
     super();
-    this.update = this.update.bind(this);
-    this.addNote = this.addNote.bind(this);
+    this.handleContentUpdate = this.handleContentUpdate.bind(this);
+    this.handleListAddNote = this.handleListAddNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
-    this.updateFocus = this.updateFocus.bind(this);
+    this.handleUpdateFocus = this.handleUpdateFocus.bind(this);
     // state.notes should be empty finally.
     this.state = {
       notes: [
@@ -20,12 +20,12 @@ class App extends React.Component {
       focus: 0,
     };
   }
-  update(updatedNote) {
+  handleContentUpdate(updatedNote) {
     const notes = [...this.state.notes];
     notes[this.state.focus] = updatedNote;
     this.setState({ notes });
   }
-  addNote(note) {
+  handleListAddNote(note) {
     const notes = [...this.state.notes, note];
     this.setState({ notes });
   }
@@ -34,7 +34,7 @@ class App extends React.Component {
     notes[key] = null;
     this.setState({ notes });
   }
-  updateFocus(focus) {
+  handleUpdateFocus(focus) {
     this.setState({ focus });
   }
   render() {
@@ -42,14 +42,14 @@ class App extends React.Component {
       <div className="note-app">
         <List
           notes={this.state.notes}
-          addNote={this.addNote}
-          deleteNote={this.deleteNote}
           focus={this.state.focus}
-          updateFocus={this.updateFocus}
+          onAddNote={this.handleListAddNote}
+          deleteNote={this.deleteNote}
+          onUpdateFocus={this.handleUpdateFocus}
         />
         <Content
           note={this.state.notes[this.state.focus]}
-          update={this.update}
+          onUpdate={this.handleContentUpdate}
         />
       </div>
     );
