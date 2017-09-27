@@ -9,13 +9,13 @@ class List extends React.Component {
   }
   constructor() {
     super();
-    this.delete = this.delete.bind(this);
+    this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
   }
 
   isActive(key) {
     return `note-list-item ${(key === this.props.focus) ? 'active' : ''}`;
   }
-  delete(e, key) {
+  handleDeleteButtonClick(e, key) {
     this.props.onDeleteNote(key);
     e.stopPropagation();
   }
@@ -31,7 +31,7 @@ class List extends React.Component {
         <span
           role="button"
           className="close"
-          onClick={e => this.delete(e, key)}
+          onClick={e => this.handleDeleteButtonClick(e, key)}
         >&times;</span>
         <h2>{List.getNoteTitle(note)}</h2>
         <span>{note.timestamp}</span>
