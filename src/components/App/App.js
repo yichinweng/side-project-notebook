@@ -35,7 +35,9 @@ class App extends React.Component {
     if (notes.length === 0) {
       notes = [getDefaultNote()];
     }
-    this.setState({ notes }, this.refreshFocus(key));
+    this.setState({ notes }, () => {
+      this.refreshFocus(key);
+    });
   }
   refreshFocus(key) {
     if (this.state.focus > key) {
