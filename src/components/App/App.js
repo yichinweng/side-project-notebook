@@ -2,6 +2,7 @@ import React from 'react';
 import List from '../List/List';
 import Content from '../Content/Content';
 import { getDefaultNote } from '../../helper';
+import base from '../../base';
 
 import './App.scss';
 
@@ -19,6 +20,16 @@ class App extends React.Component {
       ],
       focus: 0,
     };
+  }
+  componentWillMount() {
+    // this runs right before the <App> is rendered
+    this.ref = base.syncState('notes', {
+      context: this,
+      state: 'notes',
+    });
+  }
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   }
   handleContentUpdate(updatedNote) {
     const notes = [...this.state.notes];
