@@ -2,5 +2,9 @@
 node_modules
 
 # The file packed by Webpack
-/public/bundle.js
+/public/*
+!/public/favicon.ico
+!/public/index.html
+
+# firebase config
 src/config/firebase.js
